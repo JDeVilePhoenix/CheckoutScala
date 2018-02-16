@@ -26,10 +26,18 @@ class Checkout {
   // step 2: Simple offers, implemented to be used with any item
   // Takes an string and a list of strings, uses the List count function
   // to count the passed in item and returns the amount to be deducted from the total,
-  // the the price of the item multiplied by the amount of items counted divided by 2.
+  // the the price of the item, multiplied by the amount of items counted divided by 2.
   def applyBogofDeal(item:String, cart:List[String]) : Float = {
     val count = cart.count(_ == item)
     return products(item) * (count/2)
+  }
+
+  // Takes an string and a list of strings, uses the List count function
+  // to count the passed in item and returns the amount to be deducted from the total,
+  // the the price of the item, multiplied by the amount of items counted divided by 3.
+  def applyThreeForTwoDeal(item:String, cart:List[String]) : Float = {
+    val count = cart.count(_ == item)
+    return products(item) * (count/3)
   }
 
   // format the output to british pounds
