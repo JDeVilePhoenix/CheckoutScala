@@ -49,9 +49,11 @@ class Checkout {
 
 object main {
   def main(args: Array[String]) {
-    val cart = List("Apple", "Apple", "Orange", "Apple")
+    val cart = List("Apple", "Apple", "Orange", "Apple", "Orange", "Apple", "Orange")
     val checkout = new Checkout
     val total = checkout.calculateTotal(cart)
+    val finalTotal = total - checkout.applyBogofDeal("Apple", cart) - checkout.applyThreeForTwoDeal("Orange", cart)
     println("Your total comes to £" + checkout.formatToPounds(total))
+    println("With the current deals on apples and oranges your total comes to: £" + checkout.formatToPounds(finalTotal))
   }
 }
