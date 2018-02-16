@@ -22,3 +22,5 @@ class CheckoutTests {
     val total = checkout.calculateTotal(cart)
     assertEquals(0, total, 0)
   }
+
+}
