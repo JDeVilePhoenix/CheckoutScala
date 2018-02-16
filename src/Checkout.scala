@@ -1,3 +1,5 @@
+import java.text.DecimalFormat
+
 class Checkout {
   private val products = Map("Apple" -> 0.60f, "Orange" -> 0.25f)
 
@@ -21,4 +23,18 @@ class Checkout {
       return total
   }
 
+  // format the output to british pounds
+  def formatToPounds(c:Float) : String = {
+    val gbp = new DecimalFormat("#,###0.00")
+    gbp.format(c)
+  }
+}
+
+object main {
+  def main(args: Array[String]) {
+    val cart = List("Apple", "Apple", "Orange", "Apple")
+    val checkout = new Checkout
+    val total = checkout.calculateTotal(cart)
+    println("Your total comes to £" + checkout.formatToPounds(total))
+  }
 }
