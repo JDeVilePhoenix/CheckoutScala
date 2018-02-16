@@ -4,10 +4,10 @@ class Checkout {
   private val products = Map("Apple" -> 0.60f, "Orange" -> 0.25f)
 
   // step 1: Shopping cart
-  // a more scalable solution, can accept any number of mapped products
-  // takes a list of string product names and compares each element with the products map
+  // A more scalable solution, can accept any number of mapped products.
+  // Takes a list of string product names and compares each element with the products map
   // totaling the associated price of the mapped product if an empty list is passed or an incorrect
-  // product name the function returns 0
+  // product name the function returns 0.
   def calculateTotal(cart:List[String]): Float = {
     var total = 0f
     if (cart.nonEmpty) try {
@@ -21,6 +21,15 @@ class Checkout {
     }
     else
       return total
+  }
+
+  // step 2: Simple offers, implemented to be used with any item
+  // Takes an string and a list of strings, uses the List count function
+  // to count the passed in item and returns the amount to be deducted from the total,
+  // the the price of the item multiplied by the amount of items counted divided by 2.
+  def applyBogofDeal(item:String, cart:List[String]) : Float = {
+    val count = cart.count(_ == item)
+    return products(item) * (count/2)
   }
 
   // format the output to british pounds
